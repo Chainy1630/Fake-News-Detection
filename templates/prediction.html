@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="static/icons8-facebook-ios-16-filled-32.png" rel="icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <title>Fake News Detection</title>
+  </head>
+  <body class="bg-gray-200">
+    <header class="text-gray-600 body-font -my-8">
+      <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+        <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" class="w-10 h-10 text-white p-2 bg-green-500 rounded-full" viewBox="0 0 24 24">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+          </svg>
+          <span class="ml-3 text-xl">Fake News Detection</span>
+        </a>
+        <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+          <a href="/" class="mr-5 hover:text-gray-900">Home</a>
+          <a href="/predict" class="mr-5 hover:text-gray-900">Prediction</a>
+          <a href="#" class="mr-5 hover:text-gray-900">About</a>
+          <a href="#" class="mr-5 hover:text-gray-900">Contact</a>
+        </nav>
+      </div>
+    </header>
+    <hr>
+
+    <section class="text-gray-600 body-font">
+      <div class="container px-5 py-24 mx-auto">
+        <div class="flex flex-col text-center w-full mb-10">
+          <h2 class="text-xs text-green-500 tracking-widest font-medium title-font mb-1">Machine Learning Project</h2>
+          <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Fake News Detection</h1>
+          <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
+            Enter a news headline below to check whether it looks fake or real.
+          </p>
+        </div>
+
+        <!-- Show prediction result -->
+        {% if prediction_text %}
+        <p class="text-center text-xl font-semibold text-primary mb-6">
+          {{ prediction_text }}
+        </p>
+        {% endif %}
+
+        <!-- Input form -->
+        <div class="max-w-lg mx-auto">
+          <form action="/predict" method="POST">
+            <div class="mb-3">
+              <label for="news" class="form-label">Enter news text</label>
+              <textarea class="form-control" id="news" name="news" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="inline-flex text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded text-lg">
+              Predict
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
